@@ -1,4 +1,6 @@
-﻿namespace PgValidator;
+﻿using PgValidator.Query;
+
+namespace PgValidator;
 
 public class PgColumn
 {
@@ -18,7 +20,7 @@ public class PgColumn
     public int OrdinalPosition { get; private set; }
 
     [DbColumn("is_nullable")]
-    public bool IsNullable { get;private set; }
+    public bool IsNullable { get; private set; }
 
     [DbColumn("data_type")]
     public string DataType { get; private set; } = null!;

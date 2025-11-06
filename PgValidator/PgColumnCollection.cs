@@ -1,9 +1,9 @@
-﻿using System.Collections;
-using System.Diagnostics;
+﻿using PgValidator.Query;
+using System.Collections;
 
 namespace PgValidator;
 
-public class PgColumnCollection:IEnumerable<PgColumn>
+public class PgColumnCollection : IEnumerable<PgColumn>
 {
     private static readonly string ColumnsSQL = @"SELECT
  C.column_name
@@ -28,12 +28,12 @@ ORDER BY
     public PgTable Parent { get; }
     private PgColumnCollection(PgTable parent)
     {
-        this.Parent = parent;
+        Parent = parent;
     }
 
     public PgColumn this[int index] => _columns[index];
 
-    public PgColumn this[string columnName] => _columns.Where(x=>x.ColumnName.Equals(columnName,StringComparison.OrdinalIgnoreCase)).First();
+    public PgColumn this[string columnName] => _columns.Where(x => x.ColumnName.Equals(columnName, StringComparison.OrdinalIgnoreCase)).First();
 
     private List<PgColumn> _columns { get; set; } = null!;
 

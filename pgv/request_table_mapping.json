@@ -1,0 +1,22 @@
+[
+  {
+    "request_name": "FilmCategory",
+    "country": "jp",
+    "table_mapping_json_path": "t_jp_film_category"
+  },
+  {
+    "request_name": "FilmCategory",
+    "country": "en",
+    "table_mapping_json_path": "t_en_film_category"
+  },
+  {
+    "request_name": "FilmActor",
+    "country": "en",
+    "table_mapping_json_path": "t_en_film_actor"
+  },
+  {
+    "request_name": "FilmActor",
+    "country": "jp",
+    "table_mapping_json_path": "t_jp_film_actor"
+  }
+]

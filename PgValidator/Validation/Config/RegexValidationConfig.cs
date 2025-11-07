@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 namespace PgValidator.Validation.Config;
 
 [ValidationConfig(typeof(RegexValidator))]
-public class RegexValidationConfig : IValidationConfig
+public class RegexValidationConfig : ValidationConfigBase
 {
     [JsonPropertyName("pattern")]
     [JsonInclude]

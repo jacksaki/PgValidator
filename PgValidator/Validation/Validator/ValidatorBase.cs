@@ -7,13 +7,12 @@ public abstract class ValidatorBase : IValidator
 {
     public string ErrorCode { get; }
     public IValidationConfig Config { get; protected set; }
-    public bool IsAllColumn { get; }
+    public bool TargetAllColumn { get; }
     protected ValidatorBase(IValidationConfig config)
     {
         this.Config = config;
-        var attr = this.GetType().GetCustomAttribute<ErrorCodeAttribute>();
-        this.IsAllColumn = attr?.IsAllColumn == true ? true : false;
-        ErrorCode = attr?.ErrorCode ?? "UNKNOWN";
+        this.TargetAllColumn = config.TargetAllColumns;
+        ErrorCode = this.GetType().GetCustomAttribute<ErrorCodeAttribute>()!.ErrorCode;
     }
 
     public abstract ValidationResultItem Validate(PgColumn column, object? value);

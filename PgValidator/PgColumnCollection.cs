@@ -1,5 +1,6 @@
 ﻿using PgValidator.Query;
 using System.Collections;
+using ZLinq;
 
 namespace PgValidator;
 
@@ -46,7 +47,10 @@ ORDER BY
         {"table_name",parent.TableName }
     });
         var columns = new PgColumnCollection(parent);
-        columns._columns = result.Rows.Select(x => x.Create<PgColumn, PgColumnCollection>(columns)).ToList();
+        columns._columns = result.Rows
+            .AsValueEnumerable()
+            .Select(x => x.Create<PgColumn, PgColumnCollection>(columns))
+            .ToList();
         return columns;
     }
 

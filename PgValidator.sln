@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36616.10 d17.14
+VisualStudioVersion = 17.14.36616.10
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PgValidator", "PgValidator\PgValidator.csproj", "{AFD0589E-6258-4050-9E7B-3FB0CEBCED30}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pgv", "pgv\pgv.csproj", "{174570DF-9781-4FDE-BB5C-5636A341F2E8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{AFD0589E-6258-4050-9E7B-3FB0CEBCED30}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AFD0589E-6258-4050-9E7B-3FB0CEBCED30}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AFD0589E-6258-4050-9E7B-3FB0CEBCED30}.Release|Any CPU.Build.0 = Release|Any CPU
+		{174570DF-9781-4FDE-BB5C-5636A341F2E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{174570DF-9781-4FDE-BB5C-5636A341F2E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{174570DF-9781-4FDE-BB5C-5636A341F2E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{174570DF-9781-4FDE-BB5C-5636A341F2E8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

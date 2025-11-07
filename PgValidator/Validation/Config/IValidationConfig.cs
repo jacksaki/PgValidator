@@ -2,4 +2,5 @@
 
 public interface IValidationConfig
 {
+    public bool TargetAllColumns { get; }
 }

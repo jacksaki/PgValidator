@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using PgValidator.Validation.Validator;
 
 namespace PgValidator.Validation.Config;
 
-[ValidationConfig(typeof(NotNullValidator))]
-public class NotNullValidationConfig
+[ValidationConfig(typeof(NotNullValidator), true)]
+public class NotNullValidationConfig : ValidationConfigBase
 {
 }

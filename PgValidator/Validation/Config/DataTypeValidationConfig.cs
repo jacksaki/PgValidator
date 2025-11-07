@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using PgValidator.Validation.Validator;
 
 namespace PgValidator.Validation.Config;
 
-[ValidationConfig(typeof(DataTypeValidator))]
-public class DataTypeValidationConfig
+[ValidationConfig(typeof(DataTypeValidator), true)]
+public class DataTypeValidationConfig : ValidationConfigBase
 {
 }

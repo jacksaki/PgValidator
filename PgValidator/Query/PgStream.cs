@@ -1,5 +1,5 @@
 ﻿using System.Data.Common;
-
+using ZLinq;
 namespace PgValidator.Query;
 
 public sealed class PgStream : IAsyncEnumerable<PgQueryResultRow>
@@ -12,7 +12,8 @@ public sealed class PgStream : IAsyncEnumerable<PgQueryResultRow>
         _reader = reader;
         Columns = new PgQueryResultColumnCollection(
             Enumerable.Range(0, reader.FieldCount)
-                .Select(i => new PgQueryResultColumn(i, reader.GetName(i), reader.GetFieldType(i))).ToList());
+            .AsValueEnumerable()
+            .Select(i => new PgQueryResultColumn(i, reader.GetName(i), reader.GetFieldType(i))).ToList());
     }
 
     public async IAsyncEnumerator<PgQueryResultRow> GetAsyncEnumerator(CancellationToken cancellationToken = default)

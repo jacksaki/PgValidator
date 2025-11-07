@@ -16,20 +16,18 @@ public class ColumnRule
 
     [JsonPropertyName("validators")]
     [JsonInclude]
-    public List<IValidationConfig> Validators { get; private set; } = null!;
+    private List<IValidationConfig> Validators { get; set; } = null!;
 
-    private List<IValidator>? _cachedValidators;
-    public IReadOnlyList<IValidator> GetValidators()
+    public List<IValidator> GetValidators()
     {
         if (_cachedValidators != null)
         {
             return _cachedValidators;
         }
 
-        _cachedValidators = Validators
-            .Select(conf => ValidatorFactory.Create(conf))
-            .ToList();
-
+        _cachedValidators = ValidatorFactory.CreateAll(this.Validators);
         return _cachedValidators;
     }
+
+    private List<IValidator>? _cachedValidators;
 }

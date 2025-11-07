@@ -1,9 +1,4 @@
 ﻿using PgValidator.Validation.Config;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PgValidator.Validation.Validator;
 
@@ -15,10 +10,11 @@ public class NotNullValidator : ValidatorBase
 
     public override ValidationResultItem Validate(PgColumn column, object? value)
     {
-        if(!column.IsNullable && value == null)
+        if (!column.IsNullable && value == null)
         {
-            return ValidationResultItem.Fail(column.ColumnName, this.ErrorCode, $"regex not matched.");
+            return ValidationResultItem.Fail(column.ColumnName, this.ErrorCode, $"{column.ColumnName} must be not null.");
         }
+
         return ValidationResultItem.Success;
     }
 }

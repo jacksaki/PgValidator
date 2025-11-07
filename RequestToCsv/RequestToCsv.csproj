@@ -7,10 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-	  <PackageReference Include="AWSSDK.S3" Version="4.0.11" />
-	  <PackageReference Include="Npgsql" Version="9.0.4" />
-	  <PackageReference Include="Csv" Version="2.0.205" />
-	  <PackageReference Include="ZLinq" Version="1.5.3" />
+    <PackageReference Include="Amazon.Lambda.APIGatewayEvents" Version="2.7.2" />
+    <PackageReference Include="AWSSDK.S3" Version="4.0.11" />
   </ItemGroup>
 
 </Project>

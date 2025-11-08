@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PgValidator", "PgValidator\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pgv", "pgv\pgv.csproj", "{174570DF-9781-4FDE-BB5C-5636A341F2E8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PgValidator.Tests", "PgValidator.Tests\PgValidator.Tests.csproj", "{A4262B00-BACD-48F8-90A1-E5677D77C908}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{174570DF-9781-4FDE-BB5C-5636A341F2E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{174570DF-9781-4FDE-BB5C-5636A341F2E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{174570DF-9781-4FDE-BB5C-5636A341F2E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4262B00-BACD-48F8-90A1-E5677D77C908}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4262B00-BACD-48F8-90A1-E5677D77C908}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4262B00-BACD-48F8-90A1-E5677D77C908}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4262B00-BACD-48F8-90A1-E5677D77C908}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

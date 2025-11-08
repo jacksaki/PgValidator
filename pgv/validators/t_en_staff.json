@@ -1,0 +1,59 @@
+{
+  "table_name": "t_jp_staff",
+  "columns": [
+    {
+      "column_name": "staff_id",
+      "validators": []
+    },
+    {
+      "column_name": "first_name",
+      "validators": [ { "type": "NotEmpty" } ]
+    },
+    {
+      "column_name": "last_name",
+      "validators": [ { "type": "NotEmpty" } ]
+    },
+    {
+      "column_name": "address_id",
+      "validators": []
+    },
+    {
+      "column_name": "email",
+      "validators": [ { "type": "NotEmpty" } ]
+    },
+    {
+      "column_name": "store_id",
+      "validators": []
+    },
+    {
+      "column_name": "active",
+      "validators": []
+    },
+    {
+      "column_name": "username",
+      "validators": [ { "type": "NotEmpty" } ]
+    },
+    {
+      "column_name": "password",
+      "validators": [ { "type": "NotEmpty" } ]
+    },
+    {
+      "column_name": "last_update",
+      "validators": []
+    },
+    {
+      "column_name": "picture",
+      "validators": []
+    },
+    {
+      "column_name": "picture",
+      "validators": [
+        { "type": "NotEmpty" },
+        {
+          "type": "DateFormat",
+          "format": "yyyyMMdd"
+        }
+      ]
+    }
+  ]
+}

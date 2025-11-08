@@ -3,6 +3,7 @@ using System.Globalization;
 
 namespace PgValidator.Validation.Validator;
 
+[ErrorCode("E004")]
 public class DateFormatValidator : ValidatorBase
 {
     public readonly string DateFormat;

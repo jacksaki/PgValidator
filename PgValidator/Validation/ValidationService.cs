@@ -13,10 +13,10 @@ public class ValidationService
             throw new ArgumentException("Invalid JSON.");
         }
 
-        var records = root["records"]?.AsArray();
+        var records = root["data"]?.AsArray();
         if (records == null)
         {
-            throw new ArgumentException("records is null");
+            throw new ArgumentException("data is null");
         }
 
         var table = await PgTable.LoadAsync(connectionString, ruleSet.TableName);
@@ -27,7 +27,7 @@ public class ValidationService
         foreach (var recordNode in records)
         {
             var obj = recordNode!.AsObject();
-            var dict = obj.ToDictionary(x => x.Key, y => (object?)y.Value);
+            var dict = obj.ToDictionary(x => x.Key, y => y.Value);
 
             foreach (var column in ruleSet.Columns)
             {
@@ -36,7 +36,7 @@ public class ValidationService
 
                 foreach (var v in column.GetValidators())
                 {
-                    var result = v.Validate(col, value);
+                    var result = v.Validate(col, value?.GetValue());
                     if (!result.IsValid)
                     {
                         errors.Add(new ValidationResultItem(false, result.ErrorCode, result.Message));

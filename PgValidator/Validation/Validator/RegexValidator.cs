@@ -3,12 +3,15 @@ using System.Text.RegularExpressions;
 
 namespace PgValidator.Validation.Validator;
 
+[ErrorCode("E005")]
 public class RegexValidator : ValidatorBase
 {
+    public string Patten { get; }
     private readonly Regex _regex;
     public RegexValidator(RegexValidationConfig config) : base(config)
     {
-        _regex = new Regex(config.Pattern);
+        this.Patten = config.Pattern;
+        _regex = new Regex(config.Pattern ?? string.Empty);
     }
     public override ValidationResultItem Validate(PgColumn column, object? value)
     {

@@ -1,0 +1,20 @@
+{
+  "table_name": "t_en_film_category",
+  "columns": [
+    {
+      "column_name": "film_id",
+      "request_name": "FilmId",
+      "validators": [
+
+      ]
+    },
+    {
+      "column_name": "category_id",
+      "request_name": "CategoryId"
+    },
+    {
+      "column_name": "last_update",
+      "request_name": "LastUpdate"
+    }
+  ]
+}

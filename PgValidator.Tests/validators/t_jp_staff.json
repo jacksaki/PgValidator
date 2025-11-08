@@ -1,0 +1,77 @@
+{
+  "table_name": "t_jp_staff",
+  "columns": [
+    {
+      "column_name": "staff_id",
+      "request_name": "StaffId",
+      "validators": []
+    },
+    {
+      "column_name": "first_name",
+      "request_name": "FirstName",
+      "validators": [ { "type": "NotEmpty" } ]
+    },
+    {
+      "column_name": "last_name",
+      "request_name": "LastName",
+      "validators": [ { "type": "NotEmpty" } ]
+    },
+    {
+      "column_name": "address_id",
+      "request_name": "AddressId",
+      "validators": []
+    },
+    {
+      "column_name": "email",
+      "request_name": "Email",
+      "validators": [
+        { "type": "NotEmpty" },
+        {
+          "type": "Regex",
+          "pattern": "^[a-zA-Z0-9_.+-]+@([a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]*\\.)+[a-zA-Z]{2,}$"
+        }
+      ]
+    },
+    {
+      "column_name": "store_id",
+      "request_name": "StoreId",
+      "validators": []
+    },
+    {
+      "column_name": "active",
+      "request_name": "Active",
+      "validators": []
+    },
+    {
+      "column_name": "username",
+      "request_name": "Username",
+      "validators": [ { "type": "NotEmpty" } ]
+    },
+    {
+      "column_name": "password",
+      "request_name": "Password",
+      "validators": [ { "type": "NotEmpty" } ]
+    },
+    {
+      "column_name": "last_update",
+      "request_name": "LastUpdate",
+      "validators": []
+    },
+    {
+      "column_name": "picture",
+      "request_name": "Picture",
+      "validators": []
+    },
+    {
+      "column_name": "register_date",
+      "request_name": "RegisterDate",
+      "validators": [
+        { "type": "NotEmpty" },
+        {
+          "type": "DateFormat",
+          "format": "yyyyMMdd"
+        }
+      ]
+    }
+  ]
+}

@@ -2,6 +2,7 @@
 
 namespace PgValidator.Validation.Validator;
 
+[ErrorCode("E002")]
 public class NotNullValidator : ValidatorBase
 {
     public NotNullValidator(IValidationConfig config) : base(config)

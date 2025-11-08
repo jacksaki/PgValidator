@@ -23,7 +23,6 @@ public class ValidateCommand
     {
         var rMap = await RequestMappingConfig.LoadAsync(new LocalRequestMappingJsonLoader(mappingPath));
         var path = (LocalPath)rMap.GetMappingPath(company, requestName);
-        var tMapJson = await new LocalFileReader().ReadAllTextAsync(path);
         var json = await new LocalFileReader().ReadAllTextAsync(new LocalPath(jsonPath));
         var ruleSet = JsonSerializer.Deserialize<ValidationRuleSet>(json)!;
         var table = await PgTable.LoadAsync(connectionString, ruleSet.TableName);

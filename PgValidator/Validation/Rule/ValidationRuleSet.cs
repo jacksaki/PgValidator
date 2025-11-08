@@ -4,6 +4,7 @@ namespace PgValidator.Validation.Rule;
 
 public class ValidationRuleSet
 {
+
     [JsonPropertyName("table_name")]
     [JsonInclude]
     public string TableName { get; private set; } = null!;

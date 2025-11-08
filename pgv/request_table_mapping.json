@@ -18,5 +18,15 @@
     "request_name": "FilmActor",
     "country": "jp",
     "table_mapping_json_path": "t_jp_film_actor"
+  },
+  {
+    "request_name": "Staff",
+    "country": "jp",
+    "table_mapping_json_path": "t_jp_staff"
+  },
+  {
+    "request_name": "Staff",
+    "country": "en",
+    "table_mapping_json_path": "t_en_staff"
   }
 ]

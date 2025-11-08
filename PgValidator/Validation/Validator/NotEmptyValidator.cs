@@ -2,6 +2,7 @@
 
 namespace PgValidator.Validation.Validator;
 
+[ErrorCode("E003")]
 public class NotEmptyValidator : ValidatorBase
 {
     private readonly bool AllowSpace;

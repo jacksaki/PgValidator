@@ -1,0 +1,20 @@
+{
+  "table_name": "t_jp_film_actor",
+  "columns": [
+    {
+      "column_name": "actor_id",
+      "request_name": "ActorId",
+      "validators": [
+
+      ]
+    },
+    {
+      "column_name": "film_id",
+      "request_name": "FilmId"
+    },
+    {
+      "column_name": "last_update",
+      "request_name": "LastUpdate"
+    }
+  ]
+}

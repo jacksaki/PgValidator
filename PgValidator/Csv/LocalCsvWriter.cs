@@ -6,6 +6,6 @@ public class LocalCsvWriter : ICsvWriter<LocalPath>
 {
     public async Task SaveToCsvAsync(LocalPath config, string json)
     {
-        await File.WriteAllTextAsync(config.Path, JsonToCsvConverter.ConvertToCsv(json));
+        await System.IO.File.WriteAllTextAsync(config.Path, json);
     }
 }

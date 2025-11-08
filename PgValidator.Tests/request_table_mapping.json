@@ -1,0 +1,32 @@
+[
+  {
+    "request_name": "FilmCategory",
+    "company": "jp",
+    "table_mapping_json_path": "validators\\t_jp_film_category.json"
+  },
+  {
+    "request_name": "FilmCategory",
+    "company": "en",
+    "table_mapping_json_path": "validators\\t_en_film_category.json"
+  },
+  {
+    "request_name": "FilmActor",
+    "company": "en",
+    "table_mapping_json_path": "validators\\t_en_film_actor.json"
+  },
+  {
+    "request_name": "FilmActor",
+    "company": "jp",
+    "table_mapping_json_path": "validators\\t_jp_film_actor.json"
+  },
+  {
+    "request_name": "Staff",
+    "company": "jp",
+    "table_mapping_json_path": "validators\\t_jp_staff.json"
+  },
+  {
+    "request_name": "Staff",
+    "company": "en",
+    "table_mapping_json_path": "validators\\t_en_staff.json"
+  }
+]

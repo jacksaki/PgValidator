@@ -1,4 +1,5 @@
 ﻿using Npgsql;
+using System.Text.RegularExpressions;
 
 namespace PgValidator.Query;
 
@@ -9,6 +10,23 @@ public class PgQuery : IDisposable
     {
         _conn = new NpgsqlConnection(connectionString);
         _conn.Open();
+        var searchPath = GetSearchPath(connectionString);
+        if (searchPath != null)
+        {
+            SetSchema(searchPath);
+        }
+    }
+    private void SetSchema(string schema)
+    {
+        var safeSchema = $"\"{schema.Replace("\"", "\"\"")}\"";
+        this.ExecuteNonQuery($"SET search_path TO {schema}", null);
+    }
+
+    private static string? GetSearchPath(string connectionString)
+    {
+        var regex = new Regex(@"[sS]earch[pP]ath=(?<schema>\w+);");
+        var match = regex.Match(connectionString);
+        return match.Success ? match.Groups[1].Value : null;
     }
 
     public async Task<NpgsqlTransaction> BeginTransaction()
@@ -53,6 +71,11 @@ public class PgQuery : IDisposable
         using var cmd = CreateCommand(sql, parameters);
         return await cmd.ExecuteNonQueryAsync();
     }
+    public int ExecuteNonQuery(string sql, IDictionary<string, object?>? parameters)
+    {
+        using var cmd = CreateCommand(sql, parameters);
+        return cmd.ExecuteNonQuery();
+    }
 
     public async Task<T?> ExecuteScalarAsync<T>(string sql, IDictionary<string, object?>? parameters)
     {
@@ -65,11 +88,23 @@ public class PgQuery : IDisposable
         return (T?)result;
     }
 
+    public T? ExecuteScalar<T>(string sql, IDictionary<string, object?>? parameters)
+    {
+        using var cmd = CreateCommand(sql, parameters);
+        var result = cmd.ExecuteScalar();
+        if (result == DBNull.Value)
+        {
+            return default(T?);
+        }
+        return (T?)result;
+    }
+
     public async Task<PgStream> SelectAsync(string sql, IDictionary<string, object?>? parameters, CancellationToken ct = default)
     {
         using var cmd = CreateCommand(sql, parameters);
         return new PgStream(await cmd.ExecuteReaderAsync(ct));
     }
+
     public async Task<PgQueryResult> GetQueryResultAsync(string sql, IDictionary<string, object?> parameters, CancellationToken ct = default)
     {
         var result = await SelectAsync(sql, parameters, ct);

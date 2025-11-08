@@ -12,7 +12,7 @@ public abstract class ValidatorBase : IValidator
     {
         this.Config = config;
         this.TargetAllColumn = config.TargetAllColumns;
-        ErrorCode = this.GetType().GetCustomAttribute<ErrorCodeAttribute>()!.ErrorCode;
+        this.ErrorCode = this.GetType().GetCustomAttribute<ErrorCodeAttribute>()!.ErrorCode;
     }
 
     public abstract ValidationResultItem Validate(PgColumn column, object? value);

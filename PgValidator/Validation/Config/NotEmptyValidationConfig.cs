@@ -1,7 +1,9 @@
-﻿using System.Text.Json.Serialization;
+﻿using PgValidator.Validation.Validator;
+using System.Text.Json.Serialization;
 
 namespace PgValidator.Validation.Config;
 
+[ValidationConfig(typeof(NotEmptyValidator))]
 public class NotEmptyValidationConfig : ValidationConfigBase
 {
     [JsonPropertyName("allow_space")]

@@ -16,7 +16,8 @@ public class ColumnRule
 
     [JsonPropertyName("validators")]
     [JsonInclude]
-    private List<IValidationConfig> Validators { get; set; } = null!;
+    [JsonConverter(typeof(ValidationConfigListConverter))]
+    private List<IValidationConfig> Validators { get; set; } = Array.Empty<IValidationConfig>().ToList();
 
     public List<IValidator> GetValidators()
     {

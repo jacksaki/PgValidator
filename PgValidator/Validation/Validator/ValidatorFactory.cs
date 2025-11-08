@@ -11,7 +11,12 @@ public static class ValidatorFactory
     {
         _targetAllColumnsConfigCache = Assembly.GetExecutingAssembly().GetTypes()
             .AsValueEnumerable()
-            .Where(x => typeof(IValidationConfig).IsAssignableFrom(x))
+            .Where(x =>
+                x.IsClass && 
+                !x.IsAbstract && 
+                typeof(IValidationConfig).IsAssignableFrom(x) &&
+                x.GetCustomAttribute<ValidationConfigAttribute>()?.TargetAllColumns == true
+            )
             .Select(x => Create(CreateConfigInstance(x))).ToList();
     }
 
@@ -35,7 +40,13 @@ public static class ValidatorFactory
         }
 
         var validatorType = attr.ValidatorType;
-        var ctor = validatorType.GetConstructor(new[] { configType });
+        var ctor = validatorType
+            .GetConstructors()
+            .FirstOrDefault(c =>
+            {
+                var p = c.GetParameters();
+                return p.Length == 1 && p[0].ParameterType.IsAssignableFrom(configType);
+            });
         if (ctor == null)
         {
             throw new InvalidOperationException($"Validator '{validatorType.Name}' に '{configType.Name}' を受け取るコンストラクタがありません。");

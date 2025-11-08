@@ -1,0 +1,17 @@
+{
+  "table_name": "t_en_film_actor",
+  "columns": [
+    {
+      "column_name": "actor_id",
+      "validators": [
+
+      ]
+    },
+    {
+      "column_name": "film_id"
+    },
+    {
+      "column_name": "last_update"
+    }
+  ]
+}

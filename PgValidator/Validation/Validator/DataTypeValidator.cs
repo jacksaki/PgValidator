@@ -1,29 +1,65 @@
 ﻿using PgValidator.Validation.Config;
+using System.Buffers.Text;
 
-namespace PgValidator.Validation.Validator
+namespace PgValidator.Validation.Validator;
+
+[ErrorCode("E001")]
+public class DataTypeValidator : ValidatorBase
 {
-    public class DataTypeValidator : ValidatorBase
+    public DataTypeValidator(DataTypeValidationConfig config) : base(config)
     {
-        public DataTypeValidator(DataTypeValidationConfig config) : base(config)
+    }
+
+    private bool IsCompatible(object? value, Type targetType)
+    {
+        if (value == null)
         {
+            return !targetType.IsValueType || Nullable.GetUnderlyingType(targetType) != null;
         }
 
-        public override ValidationResultItem Validate(PgColumn column, object? value)
-        {
-            if (column.IsNullable && value == null)
-            {
-                return ValidationResultItem.Success;
-            }
+        var valueType = value.GetType();
 
-            try
-            {
-                Convert.ChangeType(value, column.Type);
-                return ValidationResultItem.Success;
-            }
-            catch
-            {
-                return ValidationResultItem.Fail(column.ColumnName, this.ErrorCode, $"");
-            }
+        if (targetType == typeof(byte[]))
+        {
+            Convert.FromBase64String(value.ToString()!);
+            return true;
+        }
+
+        if (targetType.IsGenericType && targetType.GetGenericTypeDefinition() == typeof(Nullable<>))
+        {
+            targetType = Nullable.GetUnderlyingType(targetType)!;
+        }
+
+        if (targetType.IsAssignableFrom(valueType))
+        {
+            return true;
+        }
+
+        try
+        {
+            Convert.ChangeType(value, targetType);
+            return true;
+        }
+        catch
+        {
+            return false;
+        }
+    }
+
+    public override ValidationResultItem Validate(PgColumn column, object? value)
+    {
+        if (column.IsNullable && value == null)
+        {
+            return ValidationResultItem.Success;
+        }
+
+        if (IsCompatible(value, column.Type))
+        {
+            return ValidationResultItem.Success;
+        }
+        else
+        {
+            return ValidationResultItem.Fail(column.ColumnName, this.ErrorCode, $"");
         }
     }
 }
